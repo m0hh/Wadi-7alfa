@@ -1,0 +1,18 @@
+  <a href="{% url 'tasksclient' %}"><h2>View tasks</h2></a>
+
+ <table border="1">
+  <tr>
+    <th>id</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Parent</th>
+  </tr>
+  <tr>
+    {% for task in subtasks %}
+    <td>{{ task.id }}</td>
+    <td>{{ task.name }}</td>
+    <td>{{ task.description }}</td>
+    <td>{{ task.parent }}</td>
+    {% endfor %}
+  </tr>
+</table> 

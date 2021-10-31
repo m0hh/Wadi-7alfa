@@ -1,0 +1,10 @@
+{% if request.user.is_authenticated %}
+    {% if request.user.info %}
+        <h2>Hello {{ request.user.info.name }}</h2>
+        <div><h3>View your <a href="{% url 'tasksclient' %}">Tasks</a></h3></div>
+    {% else %}
+        <h2>You need to <a href="{% url 'sync' %}">sync</a> your account</h2>
+    {% endif %}
+{% else %}
+    <h2> Please <a href="{% url 'login' %}">login</a> to start </h2>
+{% endif %}

@@ -25,12 +25,13 @@ SECRET_KEY = '9*$9q9by6-3szfgjh@-v#u5c+0m@djkl1zd$8h##a+sw*$_*b7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['c3b8-41-45-208-190.ngrok.io']
+ALLOWED_HOSTS = ['b423-41-40-177-141.ngrok.io']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'users',
     'client',
     'back',
     'rest_framework',
@@ -133,3 +134,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+

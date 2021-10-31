@@ -1,7 +1,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 import requests
-from .models import Task, SubTask
+from .models import Task, SubTask, UserInfo
 
 t_id = '37205299'
 token = "pk_49209905_ZCMKX04DQJ02CJ1CPBD1V9B4A029OW3G"
@@ -20,34 +20,35 @@ def request_router(data):
     id = data['task_id']
     if data['event'] == 'taskDeleted':
         delete_task(id)
-
-    headers = {
-    'Authorization': token,
-    'Content-Type': 'application/json'
-    }
-    r = requests.get(f"https://api.clickup.com/api/v2/task/{id}/?custom_task_ids=&team_id=&include_subtasks=", headers=headers)
-    r = r.json()
-    print(r)
-    if data['event'] == 'taskCreated':
-        if r["parent"] == None:
-            create_task(r)
-        else:
-            create_sub_task(r)
-    elif data['event'] == 'taskUpdated':
-        if r["parent"] == None:
-            update_task(r)
-        else:
-            update_sub_task(r)
+    
+    else:
+        headers = {
+        'Authorization': token,
+        'Content-Type': 'application/json'
+        }
+        r = requests.get(f"https://api.clickup.com/api/v2/task/{id}/?custom_task_ids=&team_id=&include_subtasks=", headers=headers)
+        r = r.json()
+        print(r)
+        if data['event'] == 'taskCreated':
+            if r["parent"] == None:
+                create_task(r)
+            else:
+                create_sub_task(r)
+        elif data['event'] == 'taskUpdated':
+            if r["parent"] == None:
+                update_task(r)
+            else:
+                update_sub_task(r)
 
         
 
 def create_task(data):
-    Task.objects.create(id = data["id"], name = data["name"], dscription = data["description"], status = data["status"]["status"])
+    Task.objects.create(id = data["id"], name = data["name"], dscription = data["description"], status = data["status"]["status"], user = UserInfo.objects.get(site_id = data['creator']['id']))
 
 def create_sub_task(data):
     try:
         p = Task.objects.get(id = data["parent"])
-        SubTask.objects.create(id= data["id"], name= data["name"], description= data["description"], parent= p)
+        SubTask.objects.create(id= data["id"], name= data["name"], description= data["description"], parent= p, user = UserInfo.objects.get(site_id = data['creator']['id']))
     except Task.DoesNotExist:
         print("object does not exist")
 

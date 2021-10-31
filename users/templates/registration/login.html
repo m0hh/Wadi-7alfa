@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Login</title>
+        
+    </head>
+
+    <body>
+{% if user.is_authenticated %}
+<h2>Yo're already logged in <a href="{% url 'home' %}">Go to front page</a></h2>
+{% else %}
+<form method="POST">{% csrf_token %}
+    
+<!-- form variable -->    
+ {{ form.as_p }} 
+
+  <input type="submit" name="sumbit">
+</form>
+    </body>
+{% endif %}
+
+</html>

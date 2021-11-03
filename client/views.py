@@ -47,7 +47,7 @@ def sync(request):
 
 def createweb(token, t_id):
     values = {
-        "endpoint": "https://b423-41-40-177-141.ngrok.io/task/",
+        "endpoint": "https://dfe9-156-208-159-134.ngrok.io/task/",
         "events": [
         "taskCreated",
         "taskUpdated",

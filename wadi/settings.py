@@ -25,7 +25,7 @@ SECRET_KEY = '9*$9q9by6-3szfgjh@-v#u5c+0m@djkl1zd$8h##a+sw*$_*b7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['b423-41-40-177-141.ngrok.io']
+ALLOWED_HOSTS = ['dfe9-156-208-159-134.ngrok.io']
 
 
 # Application definition
@@ -78,24 +78,22 @@ WSGI_APPLICATION = 'wadi.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-
     'default': {
-
-        'ENGINE': 'django.db.backends.postgresql',
-
-        'NAME': 'sikadb',
-
-        'USER': 'postgres',
-
-        'PASSWORD': '01001426668aA#',
-
-        'HOST': 'localhost',
-
-        'PORT': '5432',
-
-    }
-
+        'ENGINE': 'sql_server.pyodbc',
+        'HOST': 'WIN-6TOMBKMIP62.abacusksa.dyndns.org',
+        'PORT': '3383',
+        'NAME': 'TimeSheetIntegration',
+        'USER': 'sa',
+        'PASSWORD': 'Abacus@123',
+        'OPTIONS': {
+            'driver': 'ODBC Driver 17 for SQL Server',
+            'unicode_results': True,
+        },
+    },
 }
+
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

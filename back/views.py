@@ -3,8 +3,7 @@ from rest_framework.response import Response
 import requests
 from .models import Task, SubTask, UserInfo
 
-t_id = '37205299'
-token = "pk_49209905_ZCMKX04DQJ02CJ1CPBD1V9B4A029OW3G"
+
 
 @api_view(['POST'])
 def Clickup(request):
@@ -20,8 +19,11 @@ def request_router(data):
     id = data['task_id']
     if data['event'] == 'taskDeleted':
         delete_task(id)
+
     
     else:
+        toke = UserInfo.objects.get(site_id = data["history_items"][0]["user"]["id"])
+        token = toke.api_pk
         headers = {
         'Authorization': token,
         'Content-Type': 'application/json'

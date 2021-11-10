@@ -47,11 +47,18 @@ def sync(request):
 
 def createweb(token, t_id):
     values = {
-        "endpoint": "https://dfe9-156-208-159-134.ngrok.io/task/",
+        "endpoint": "https://ee29-156-208-73-34.ngrok.io/task/",
         "events": [
         "taskCreated",
         "taskUpdated",
         "taskDeleted",
+        "taskTimeTrackedUpdated",
+        "listCreated",
+        "listUpdated",
+        "listDeleted",
+        "spaceCreated",
+        "spaceUpdated",
+        "spaceDeleted",
         ]
     }
 

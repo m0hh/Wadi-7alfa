@@ -25,7 +25,7 @@ SECRET_KEY = '9*$9q9by6-3szfgjh@-v#u5c+0m@djkl1zd$8h##a+sw*$_*b7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dfe9-156-208-159-134.ngrok.io']
+ALLOWED_HOSTS = ['ee29-156-208-73-34.ngrok.io']
 
 
 # Application definition
@@ -77,6 +77,7 @@ WSGI_APPLICATION = 'wadi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
@@ -90,6 +91,26 @@ DATABASES = {
             'unicode_results': True,
         },
     },
+}
+'''
+DATABASES = {
+
+    'default': {
+
+        'ENGINE': 'django.db.backends.postgresql',
+
+        'NAME': 'sikadb',
+
+        'USER': 'postgres',
+
+        'PASSWORD': '01001426668aA#',
+
+        'HOST': 'localhost',
+
+        'PORT': '5432',
+
+    }
+
 }
 
 

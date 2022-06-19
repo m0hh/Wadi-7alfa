@@ -85,7 +85,7 @@ DATABASES = {
         'PORT': '3383',
         'NAME': 'TimeSheetIntegration',
         'USER': 'sa',
-        'PASSWORD': 'Abacus@123',
+        'PASSWORD': '',
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',
             'unicode_results': True,
